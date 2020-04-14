@@ -1,0 +1,42 @@
+{
+    "ReRoutes": [
+        {
+            "DownstreamPathTemplate": "/todos/1",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "jsonplaceholder.typicode.com",
+                    "Port": 443
+                }
+            ],
+            "UpstreamPathTemplate": "/todos",
+            "UpstreamHttpMethod": [ "Get" ],
+            "Key": "todos"
+        },
+        {
+            "DownstreamPathTemplate": "/users/1",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "jsonplaceholder.typicode.com",
+                    "Port": 443
+                }
+            ],
+            "UpstreamPathTemplate": "/users",
+            "UpstreamHttpMethod": [ "Get" ],
+            "Key": "users"
+        }
+    ],
+    "Aggregates": [
+        {
+            "ReRouteKeys": [
+                "todos",
+                "users"
+            ],
+            "UpstreamPathTemplate": "/"
+        }
+    ],
+    "GlobalConfiguration": {
+        "BaseUrl": "https://api.supplyshift.net"
+    }
+}
